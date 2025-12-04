@@ -46,9 +46,9 @@ exports.getRoomMessages = async (req, res) => {
     }
 
     const { data, error } = await supabase
-        .from("messages")
-        .select("*")
-        .eq("room_id", room_id)
+        .from('messages')
+        .select('*, profiles(full_name, avatar_url)') // <-- Aquí está la magia
+        .eq('room_id', room_id)
         .order("created_at", { ascending: true });
 
     if (error) return res.status(400).json({ error });
