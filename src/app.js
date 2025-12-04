@@ -14,8 +14,7 @@ const chatRoutes = require("./routes/chat");
 app.use("/api/chat", chatRoutes);
 const surveyRoutes = require("./routes/surveys");
 app.use("/api/surveys", surveyRoutes);
-const adminRoutes = require("./routes/adminRoutes");
-app.use('/api/admin', adminRoutes);
+
 
 
 
