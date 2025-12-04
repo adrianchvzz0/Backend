@@ -161,4 +161,21 @@ exports.updateUser = async (req, res) => {
     }
 };
 
+// userController.js
+exports.getUsersForDashboard = async (req, res) => {
+    try {
+        const { data, error } = await supabase
+            .from('users')
+            .select('id, email, role, created_at')
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        res.json(data);
+    } catch (err) {
+        console.error('Error getUsersForDashboard:', err);
+        res.status(500).json({ error: 'Error al obtener usuarios' });
+    }
+};
+
 

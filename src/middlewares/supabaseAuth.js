@@ -46,17 +46,26 @@ async function ensureUserInUsersTable(authUser) {
     // Aquí solo dejo el esqueleto para cuando tengas más datos:
     try {
         if (role === "student") {
-            // si algún día quieres llenar students con defaults, podrías hacer:
-            // await supabase.from("students").insert({
-            //   user_id: userId,
-            //   enrollment_number: null,
-            //   course: null,
-            //   year: null,
-            // });
+
+            await supabase.from("students").insert({
+                user_id: userId,
+                enrollment_number: null,
+                course: null,
+                year: null,
+            });
         } else if (role === "teacher") {
-            // await supabase.from("teachers").insert({ ... });
+            await supabase.from("teachers").insert({
+                user_id: userId,
+                employee_number: null,
+                department: null,
+                bio: null,
+            });
         } else if (role === "admin") {
-            // await supabase.from("admins").insert({ ... });
+            await supabase.from("admins").insert({
+                user_id: userId,
+                admin_level: null,
+                notes: null,
+            });
         }
     } catch (e) {
         console.error("Error insertando en tabla específica de rol:", e);

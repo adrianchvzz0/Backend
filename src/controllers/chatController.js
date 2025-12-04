@@ -25,6 +25,7 @@ exports.sendMessage = async (req, res) => {
     await supabase
         .from("rooms")
         .update({
+            last_message_by: sender_id,
             last_message: content,
             last_message_at: message.created_at,
         })
