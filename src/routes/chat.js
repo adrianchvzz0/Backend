@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const chatController = require("../controllers/chatController");
+const supabaseAuth = require("../middlewares/supabaseAuth");
 
+router.use(supabaseAuth);
 
 router.post("/rooms/create", chatController.createRoom);           // Crear un grupo
 router.post("/rooms/add-user", chatController.addUserToRoom);      // Agregar usuario a grupo
